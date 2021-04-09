@@ -16,15 +16,22 @@ class TeacherSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Joe Smith',
-            'email' => 'joe@gmail.com',
-            'password' => Hash::make('qqqqqqqq'),
+        DB::table('users')->truncate();
+
+        User::create([
+        'name' => 'Joe Smith',
+        'email' => 'joe.smith@gmail.com',
+        'password' => Hash::make('qqqqqqqq'),
         ]);
-        DB::table('users')->insert([
-            'name' => 'Jim Raynor',
-            'email' => 'jim.raynor@gmail.com',
-            'password' => Hash::make('qqqqqqqq'),
+        User::create([
+        'name' => 'Jim Raynor',
+        'email' => 'jim.raynor@gmail.com',
+        'password' => Hash::make('qqqqqqqq'),
+        ]);
+        User::create([
+        'name' => 'Violetta Firyaridi',
+        'email' => 'violettaff@gmail.com',
+        'password' => '12345678',
         ]);
     }
 }

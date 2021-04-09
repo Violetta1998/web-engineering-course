@@ -20,6 +20,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{{ route('contacts') }}">Contacts</a>
+          <a class="nav-item nav-link" href="{{ route('subjects.index') }}">My subjects</a>
+          <a class="nav-item nav-link" href="{{ route('subjects.create') }}">New subject</a>
         </div>
 
         <!-- Right Side Of Navbar -->

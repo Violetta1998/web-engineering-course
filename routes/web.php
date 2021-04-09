@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,6 @@ Auth::routes();
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
+
+Route::resource('subjects', SubjectController::class)->middleware(['auth']);
+Route::resource('subjects.tasks', TaskController::class)->shallow()->middleware(['auth']);
