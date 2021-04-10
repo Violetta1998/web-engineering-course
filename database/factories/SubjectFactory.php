@@ -28,7 +28,7 @@ class SubjectFactory extends Factory
             'description' => $this->faker->optional()->sentence(),
             'subject_code' => $this->faker->bothify($string = 'IK-SSS###'),
             'credit_value'=>$this->faker->randomDigitNotNull,
-            'user_id' => User::all()->random()->id
+            'user_id' => User::where('is_teacher', '=', '1')->get()->random()->id
         ];
     }
 }

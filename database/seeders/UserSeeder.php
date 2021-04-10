@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class TeacherSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,16 +22,25 @@ class TeacherSeeder extends Seeder
         'name' => 'Joe Smith',
         'email' => 'joe.smith@gmail.com',
         'password' => Hash::make('qqqqqqqq'),
+        'is_teacher' => 1
         ]);
         User::create([
         'name' => 'Jim Raynor',
         'email' => 'jim.raynor@gmail.com',
         'password' => Hash::make('qqqqqqqq'),
+        'is_teacher' => 1
         ]);
         User::create([
         'name' => 'Violetta Firyaridi',
         'email' => 'violettaff@gmail.com',
-        'password' => '12345678',
+        'password' => Hash::make('12345678'),
+        'is_teacher' => 1
+        ]);
+        User::create([
+            'name' => 'Maria Ivanova',
+            'email' => 'maria.ivanova@gmail.com',
+            'password' => Hash::make('12345678'),
+            'is_teacher' => 0
         ]);
     }
 }

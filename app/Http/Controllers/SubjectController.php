@@ -17,9 +17,17 @@ class SubjectController extends Controller
 
     public function index()
     {
-       return view('subjects.index', [
-            'subjects' => Auth::user()->subjects
-        ]);
+        $user = Auth::user();
+        if($user->is_teacher==1){
+            return view('subjects.index', [
+                'subjects' => $user->teacher_subjects
+            ]);
+        }
+        else{
+            return view('student.index', [
+                'subjects' => $user->student_subjects
+            ]);
+        }
     }
 
     public function create()
@@ -67,8 +75,15 @@ class SubjectController extends Controller
 
     public function destroy(Subject $subject)
     {
-        $subject->delete();
+        $user = Auth::user();
+        if($user->is_teacher==1){
+            $subject->delete();
+            return redirect()->route('subjects.index');
+        }
+        else{
+            $subject->students()->detach($user);
+            return redirect()->route('student.index');
+        }
 
-        return redirect()->route('subjects.index');
     }
 }

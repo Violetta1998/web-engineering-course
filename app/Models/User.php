@@ -29,7 +29,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
     ];
 
     /**
@@ -41,8 +41,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function subjects()
+    // public function subjects()
+    // {
+    //     return $this->hasMany(Subject::class);
+    // }
+
+    public function teacher_subjects()
     {
         return $this->hasMany(Subject::class);
     }
+
+    public function student_subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
 }

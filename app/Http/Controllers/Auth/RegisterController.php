@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +31,6 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -52,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
 
@@ -67,7 +68,23 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
         ]);
     }
+
+    public function redirectTo() {
+        $role = Auth::user()->is_teacher;
+        switch ($role) {
+          case 0:
+            return '/student_dashboard';
+            break;
+          case 1:
+            return '/teacher_dashboard';
+            break;
+
+          default:
+            return '/index';
+          break;
+        }
+      }
 }
