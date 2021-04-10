@@ -19,7 +19,7 @@ class TaskPolicy
      */
     public function viewAny(User $user)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -95,6 +95,11 @@ class TaskPolicy
 
     private function hasAccess(User $user, Task $task)
     {
-        return $task->subject->user == $user;
+        if($user->is_teacher==1){
+            return $task->subject->teacher == $user;
+        }else{
+            return $task->subject->student == $user;
+        }
+        //return $task->subject->user == $user;
     }
 }

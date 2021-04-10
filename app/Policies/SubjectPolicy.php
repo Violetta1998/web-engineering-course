@@ -94,6 +94,11 @@ class SubjectPolicy
 
     private function hasAccess(User $user, Subject $subject)
     {
-        return $subject->user == $user;
+        if($user->is_teacher==1){
+            return $subject->teacher == $user;
+        }else{
+            return $subject->student == $user;
+        }
+
     }
 }
