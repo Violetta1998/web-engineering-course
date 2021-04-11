@@ -72,6 +72,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     public function redirectTo() {
         $role = Auth::user()->is_teacher;
         switch ($role) {

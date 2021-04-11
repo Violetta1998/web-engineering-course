@@ -16,6 +16,7 @@ class SubjectSeeder extends Seeder
     public function run()
     {
         DB::table('subjects')->truncate();
+        DB::table('subject_user')->truncate();
         Subject::factory()->count(10)->create();
 
         $subjects = Subject::all();

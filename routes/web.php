@@ -25,19 +25,24 @@ Route::get('contacts',function(){
     return view('contacts');
 })->name('contacts');
 
-//Auth::routes();
+Auth::routes();
 
 // Route::get('/home', function () {
 //     return view('home');
 // })->middleware(['auth'])->name('home');
+
 
 Route::resource('subjects', SubjectController::class)->middleware(['auth']);
 Route::resource('subjects.tasks', TaskController::class)->shallow()->middleware(['auth']);
 
 Route::get('/teacher_dashboard', function(){
     return view('teacher.home');
-})->middleware(['auth'])->name('teacher.home');
+})->middleware(['auth'])->name('teacher_dashboard');
 
 Route::get('/student_dashboard', function(){
     return view('student.home');
-})->middleware(['auth'])->name('student.home');
+})->middleware(['auth'])->name('student_dashboard');
+
+Route::get('/student_index', function(){
+    return view('student.index');
+})->middleware(['auth'])->name('student_index');

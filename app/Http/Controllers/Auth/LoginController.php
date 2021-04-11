@@ -27,6 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     public function redirectTo() {
         $role = Auth::user()->is_teacher;
         switch ($role) {

@@ -20,12 +20,14 @@ class SubjectController extends Controller
         $user = Auth::user();
         if($user->is_teacher==1){
             return view('subjects.index', [
-                'subjects' => $user->teacher_subjects
+                'subjects' => $user->teacher_subjects,
+                'is_teacher' => $user->is_teacher
             ]);
         }
         else{
             return view('student.index', [
-                'subjects' => $user->student_subjects
+                'subjects' => $user->student_subjects,
+                'is_teacher' => $user->is_teacher
             ]);
         }
     }
@@ -82,7 +84,7 @@ class SubjectController extends Controller
         }
         else{
             $subject->students()->detach($user);
-            return redirect()->route('student.index');
+            return redirect()->route('subjects.index');
         }
 
     }

@@ -96,9 +96,10 @@ class TaskPolicy
     private function hasAccess(User $user, Task $task)
     {
         if($user->is_teacher==1){
-            return $task->subject->teacher == $user;
+            return $task->subject->user_id == $user->id;
         }else{
-            return $task->subject->student == $user;
+            //$task->subject->students->take($user->id) == $user->id;
+            return true;
         }
         //return $task->subject->user == $user;
     }
