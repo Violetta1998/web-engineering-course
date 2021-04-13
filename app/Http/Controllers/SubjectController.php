@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
@@ -74,6 +75,25 @@ class SubjectController extends Controller
         ]);
         $validated_data['user_id'] = Auth::id();
         Subject::create($validated_data);
+        return redirect()->route('subjects.index');
+    }
+
+    public function take(){
+        $userId = Auth::id();
+        $subjects = Subject::whereDoesntHave('students', function($q) use ($userId){
+            $q->where('user_id', $userId);
+        })->get();
+
+        return view('subjects.take', [
+            'subject' => $subjects
+        ]);
+    }
+
+    public function save(Subject $subject){
+        $user = Auth::user();
+        //dd($user->id);
+        //$user->student_subjects()->attach($subject);
+        $subject->students()->attach($user->id);
         return redirect()->route('subjects.index');
     }
 

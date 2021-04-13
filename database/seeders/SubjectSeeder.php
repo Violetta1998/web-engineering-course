@@ -24,6 +24,5 @@ class SubjectSeeder extends Seeder
             $user = User::where('is_teacher', '=', '0')->get()->random();
             $user->student_subjects()->attach($subject);
         }
-
     }
 }

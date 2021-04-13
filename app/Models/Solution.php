@@ -9,6 +9,10 @@ class Solution extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['name', 'description', 'subject_code', 'credit_value', 'user_id'];
+    protected $fillable = ['name', 'description', 'student_name', 'student_email ', 'earned_points', 'task_id', 'submitted_time', 'evaluated_time'];
 
+    public function task()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

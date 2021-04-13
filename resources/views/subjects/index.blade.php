@@ -49,7 +49,7 @@
 
     <div class="col-sm-3 my-3">
       <div class="card h-100">
-        <a href="" class="btn btn-primary">Take a subject</a>
+        <a href="{{ route('subjects.take') }}" class="btn btn-primary">Take a subject</a>
       </div>
     </div>
 
