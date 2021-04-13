@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Subject;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -21,8 +23,10 @@ class TaskController extends Controller
     }
 
     public function show(Task $task) {
+        $user = Auth::user();
         return view('tasks.show', [
-            'task' => $task
+            'task' => $task,
+            'is_teacher'=>$user->is_teacher
         ]);
     }
 

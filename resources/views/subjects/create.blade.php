@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-  <h2>New subject</h2>
+<h2>New subject</h2>
   <form action="{{ route('subjects.store') }}" method="post">
     @csrf
 
@@ -54,6 +54,8 @@
     </div>
 
   </form>
+
+
 @endsection
 
 

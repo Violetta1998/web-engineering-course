@@ -36,7 +36,8 @@
             <p class="card-text">{{ $subject['description'] }}</p>
             <p class="card-text">Subject code: {{ $subject['subject_code'] }}</p>
             <p class="card-text">Credit value: {{ $subject['credit_value'] }}</p>
-            <p class="card-text">Teacher's name: {{ $subject->user_id }}</p>
+            <p class="card-text">Teacher's name: {{ $subject->teacher->name }}</p>
+            <a href="{{ route('subjects.show', [ 'subject' => $subject->id ]) }}" class="btn btn-primary">Open</a>
             <form action="{{ route('subjects.destroy', [ 'subject' => $subject->id ]) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')

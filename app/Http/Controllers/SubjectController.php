@@ -25,7 +25,7 @@ class SubjectController extends Controller
             ]);
         }
         else{
-            return view('student.index', [
+            return view('subjects.index', [
                 'subjects' => $user->student_subjects,
                 'is_teacher' => $user->is_teacher
             ]);
@@ -38,8 +38,10 @@ class SubjectController extends Controller
     }
 
     public function show(Subject $subject) {
+        $user = Auth::user();
         return view('subjects.show', [
-            'subject' => $subject
+            'subject' => $subject,
+            'is_teacher' => $user->is_teacher
         ]);
     }
 
