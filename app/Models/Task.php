@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+
     protected $fillable = ['name', 'description', 'points', 'subject_id'];
 
     public function subject()
@@ -15,7 +16,8 @@ class Task extends Model
         return $this->belongsTo(Subject::class);
     }
 
-    public function solutions(){
-        return $this->hasMany(Task::class);
+    public function solutions()
+    {
+        return $this->hasMany(Solution::class);
     }
 }

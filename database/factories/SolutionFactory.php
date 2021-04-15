@@ -24,15 +24,16 @@ class SolutionFactory extends Factory
     public function definition()
     {
         $user = User::where('is_teacher', '=', '0')->get()->random();
+        $task = Task::all()->random();
         return [
             'name' => $this->faker->firstName(),
-            'description' => $this->faker->sentence(),
             'student_name' => $user->name,
             'student_email'=> $user->email,
-            'earned_points' => $this->faker->randomDigitNotNull,
-            'task_id' => Task::all()->random()->id,
+            'earned_points' => ($task->points)-random_int(0,$task->points),
+            'task_id' => $task->id,
             'submitted_time' =>$this->faker->dateTime($max = 'now', $timezone = null),
-            'evaluated_time' =>$this->faker->dateTime($max = 'now', $timezone = null)
+            'evaluated_time' =>$this->faker->optional()->dateTime($max = 'now', $timezone = null),
+            'solution_text'=> $this->faker->sentence()
         ];
     }
 }

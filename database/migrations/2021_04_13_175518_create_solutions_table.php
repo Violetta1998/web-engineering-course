@@ -16,13 +16,13 @@ class CreateSolutionsTable extends Migration
         Schema::create('solutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
             $table->string('student_name');
             $table->string('student_email');
             $table->integer('earned_points');
             $table->integer('task_id');
             $table->dateTime('submitted_time');
-            $table->dateTime('evaluated_time');
+            $table->dateTime('evaluated_time')->nullable();
+            $table->string('solution_text');
             $table->timestamps();
         });
     }

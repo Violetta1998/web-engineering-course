@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Subject;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
@@ -91,8 +88,6 @@ class SubjectController extends Controller
 
     public function save(Subject $subject){
         $user = Auth::user();
-        //dd($user->id);
-        //$user->student_subjects()->attach($subject);
         $subject->students()->attach($user);
         return redirect()->route('subjects.index');
     }
