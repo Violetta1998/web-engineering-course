@@ -32,7 +32,7 @@ Auth::routes();
 // })->middleware(['auth'])->name('home');
 
 Route::get('/subjects/take', [SubjectController::class, 'take'] )->name('subjects.take');
-Route::get('/subjects/{id}/save', [SubjectController::class, 'save'] )->name('subjects.save');
+Route::get('/subjects/{subject}/save', [SubjectController::class, 'save'] )->name('subjects.save');
 
 Route::resource('subjects', SubjectController::class)->middleware(['auth']);
 Route::resource('subjects.tasks', TaskController::class)->shallow()->middleware(['auth']);

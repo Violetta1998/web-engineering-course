@@ -93,7 +93,7 @@ class SubjectController extends Controller
         $user = Auth::user();
         //dd($user->id);
         //$user->student_subjects()->attach($subject);
-        $subject->students()->attach($user->id);
+        $subject->students()->attach($user);
         return redirect()->route('subjects.index');
     }
 
