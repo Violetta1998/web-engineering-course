@@ -25,6 +25,25 @@ class SolutionController extends Controller
         ]);
     }
 
+    public function store(Task $task, Request $request){
+        $user = Auth::user();
+        $validated_data = $request->validate([
+            'solution_text' => 'required'
+
+        ]);
+        $validated_data['student_name'] = $user->name;
+        $validated_data['student_email'] = $user->email;
+        $validated_data['earned_points'] = 0;
+        $validated_data['task_id'] = $task->id;
+        $validated_data['submitted_time'] = date('Y-m-d H:i:s');
+        $validated_data['evaluated_time'] = NULL;
+
+        //dd($validated_data);
+
+        Solution::create($validated_data);
+        return redirect()->route('tasks.show', [ 'task' => $task->id ]);
+    }
+
     public function evaluate(Task $task, Solution $solution, Request $request){
         $validated_data = $request->validate([
             'earned_points' => 'required|numeric|min:0|max:10'

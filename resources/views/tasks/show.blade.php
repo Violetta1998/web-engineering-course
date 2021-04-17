@@ -46,19 +46,28 @@
     <p>Description: {{ $task->description }}</p>
     <p>Teacher's name: {{$task->subject->teacher->name}}</p>
     <p>Points: {{$task['points']}}</p>
-    <p>Submitted: </p>
+    @foreach ($task->solutions as $solution)
+        @if ($user->email == $solution->student_email)
+            <p class="card-text">Submitted: YES </p>
+        @endif
+    @endforeach
 </div>
-<div class="form-group">
-    <label for="solution">Write your solution below</label>
-    <textarea name="solution" class="form-control @error('solution') is-invalid @enderror" id="solution" rows="3">{{ old('solution', '') }}</textarea>
-      @error('solution')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
-</div>
-<div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+
+<form action="{{ route('tasks.solutions.store', [ 'task' => $task->id ]) }}" method="post">
+    @csrf
+    <div class="form-group">
+        <label for="solution_text">Write your solution below</label>
+        <textarea name="solution_text" class="form-control @error('solution_text') is-invalid @enderror" id="solution_text" rows="3">{{ old('solution_text', '') }}</textarea>
+        @error('solution_text')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
 @endif
 @endsection

@@ -25,11 +25,11 @@ class SolutionFactory extends Factory
     {
         $user = User::where('is_teacher', '=', '0')->get()->random();
         $task = Task::all()->random();
+
         return [
-            'name' => $this->faker->firstName(),
             'student_name' => $user->name,
             'student_email'=> $user->email,
-            'earned_points' => ($task->points)-random_int(0,$task->points),
+            'earned_points' => ($task->points)-random_int(0, $task->points),
             'task_id' => $task->id,
             'submitted_time' =>$this->faker->dateTime($max = 'now', $timezone = null),
             'evaluated_time' =>$this->faker->optional()->dateTime($max = 'now', $timezone = null),

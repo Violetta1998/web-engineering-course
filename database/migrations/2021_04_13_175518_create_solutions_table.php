@@ -15,14 +15,14 @@ class CreateSolutionsTable extends Migration
     {
         Schema::create('solutions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('student_name');
             $table->string('student_email');
-            $table->integer('earned_points');
+            $table->integer('earned_points')->nullable();
             $table->integer('task_id');
             $table->dateTime('submitted_time');
             $table->dateTime('evaluated_time')->nullable();
             $table->string('solution_text');
+            //$table->unique(array('student_email', 'task_id'));
             $table->timestamps();
         });
     }

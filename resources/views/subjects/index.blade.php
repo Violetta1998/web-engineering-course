@@ -1,8 +1,6 @@
 @extends('layouts.base')
-
-@section('content')
-
 @if ($is_teacher==1)
+@section('content')
 <div class="row">
     @foreach($subjects as $subject)
       <div class="col-sm-3 my-3">
@@ -27,6 +25,7 @@
 @endif
 
 @if ($is_teacher==0)
+@section('content')
 <div class="row">
     @foreach($subjects as $subject)
       <div class="col-sm-3 my-3">

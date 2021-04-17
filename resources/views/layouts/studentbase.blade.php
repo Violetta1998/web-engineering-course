@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{{ route('subjects.index') }}">My subjects</a>
-          <a class="nav-item nav-link" href="">Take a subject</a>
+          <a href="{{ route('subjects.take') }}" class="nav-item nav-link" href="">Take a subject</a>
         </div>
 
         <!-- Right Side Of Navbar -->

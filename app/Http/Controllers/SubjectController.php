@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Solution;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,8 @@ class SubjectController extends Controller
         $user = Auth::user();
         return view('subjects.show', [
             'subject' => $subject,
-            'is_teacher' => $user->is_teacher
+            'is_teacher' => $user->is_teacher,
+            'user' => $user
         ]);
     }
 

@@ -24,7 +24,7 @@ class TaskFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'description' => $this->faker->optional()->sentence(),
+            'description' => $this->faker->sentence(),
             'points' => $this->faker->randomDigitNotNull,
             'subject_id' => Subject::all()->random()->id
         ];
