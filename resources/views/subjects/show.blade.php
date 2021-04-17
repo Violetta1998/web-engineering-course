@@ -72,11 +72,11 @@
         <div class="card-body">
           <a class="card-title" href="{{ route('tasks.show', [ 'task' => $task->id ]) }}">Name: {{ $task['name'] }}</a>
           <p class="card-text">Points: {{ $task['points'] }}</p>
-          @foreach ($task->solutions as $solution)
-            @if ($user->email == $solution->student_email)
-                <p class="card-text">Submitted: YES </p>
-            @endif
-          @endforeach
+            @foreach ($task->solutions as $solution)
+                @if ($user->email == $solution->student_email)
+                    <p class="card-text">Submitted: YES </p>
+                @endif
+            @endforeach
           </div>
       </div>
     </div>

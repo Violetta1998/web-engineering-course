@@ -40,7 +40,8 @@ class SolutionController extends Controller
 
         //dd($validated_data);
 
-        Solution::create($validated_data);
+        $task->solutions()->create($validated_data);
+        //Solution::create($validated_data);
         return redirect()->route('tasks.show', [ 'task' => $task->id ]);
     }
 
