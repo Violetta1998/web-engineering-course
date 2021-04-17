@@ -40,7 +40,8 @@ class TaskController extends Controller
             'is_teacher'=> $user->is_teacher,
             'submitted'=> $number_of_submitted,
             'evaluated'=> $number_of_evaluated,
-            'solutions' => $corresponding_solutions
+            'solutions' => $corresponding_solutions,
+            'user' =>$user
         ]);
     }
 
