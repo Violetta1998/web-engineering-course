@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends( ($is_teacher==1) ? 'layouts.base' : 'layouts.studentbase')
 
 @section('content')
 @if ($is_teacher==1)

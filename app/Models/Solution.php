@@ -9,7 +9,8 @@ class Solution extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['student_name', 'student_email ', 'earned_points', 'task_id', 'submitted_time', 'evaluated_time', 'solution_text'];
+    protected $fillable = ['student_name', 'student_email', 'earned_points', 'task_id', 'submitted_time', 'evaluated_time', 'solution_text'];
+
 
     public function task()
     {
