@@ -1,0 +1,22 @@
+<h2 class="display-2 my-3">My pets</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Species</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">Date of death</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pet of pets" [routerLink]="['/pets']">
+      <th scope="row">{{pet.name }}</th>
+      <td >{{pet.species}}</td>
+      <td>{{pet.date_of_birth}}</td>
+      <td>{{pet.date_of_death}}</td>
+      <td>{{pet.note}}</td>
+      <td><button type="button" [routerLink]="['/pets', pet.id, 'edit' ]" role="button"class="btn btn-primary">Edit</button></td>
+    </tr>
+  </tbody>
+</table>

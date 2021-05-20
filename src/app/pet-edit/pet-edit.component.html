@@ -1,0 +1,3 @@
+<h2 class="display-2 my-3">{{ pet ? 'Edit' : 'New' }} pet</h2>
+
+<app-pet-form [pet]="pet" (saveChanges)="onSaveChanges($event)"></app-pet-form>
