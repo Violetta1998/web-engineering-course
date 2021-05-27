@@ -9,8 +9,7 @@ import { Pet } from '../pet';
 })
 export class PetFormComponent implements OnChanges {
 
-  @Input()
-  pet: Pet = new Pet;
+  @Input() pet!: Pet;
 
   public petForm: FormGroup = this.formBuilder.group({
     'name': [ '', [ Validators.required ] ],

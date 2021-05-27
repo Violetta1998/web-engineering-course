@@ -12,7 +12,7 @@ import { PetService } from '../pet.service';
 
 export class PetEditComponent implements OnInit {
 
-  public pet: Pet = new Pet;
+  public pet!: Pet;
 
   constructor(private petService: PetService,
     private location: Location,
